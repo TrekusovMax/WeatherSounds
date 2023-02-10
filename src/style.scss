@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+  }
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+body{
+    background-image: url('./assets/summer-bg.jpg');
+    height: 100vh;
+    width: 100%; 
+    background-size: 170%;
+    background-repeat: no-repeat;    
+    background-position: top center;    
+    backdrop-filter: blur(5px);
+    padding: 20px;
+}
+h1{
+  text-align: center;
+  color: darkorange;
+  font-family: 'Roboto', 'san-serif';
+  font-size: 5rem;
+  
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px auto;
+  width: 50%;
+  gap: 50px;
+  flex-direction: row;
+  
+  #summer{
+    background-image: url('./assets/summer-bg.jpg');
+    background-position: center;
+    background-size: cover;  
+    background-position: top left;   
+    background-repeat: no-repeat;  
+  }
+  #rain{
+    background-image: url('./assets/rainy-bg.jpg');
+    background-position: center;
+    background-size: cover;  
+    background-position: top left;   
+    background-repeat: no-repeat;  
+  }
+  #winter{
+    background-image: url('./assets/winter-bg.jpg');
+    background-position: center;
+    background-size: cover;  
+    background-position: top left;   
+    background-repeat: no-repeat;  
+  }
+  
+  .bnt{
+    border-radius: 10%;
+    border: 1px solid #fff;    
+    height: 200px;
+    width: 200px;    
+    cursor: pointer;
+   
+  }
+}
+#range {
+  display: flex;
+  justify-content: center;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 50px auto;
+  width: 200px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background-image: linear-gradient(#358aeb, #358aeb);
+  background-size: 90% 100%;
+  background-repeat: no-repeat;
+  
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #358aeb;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
+}
+
+input[type=range]::-webkit-slider-runnable-track  {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
