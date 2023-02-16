@@ -7,7 +7,7 @@ const rangeInputs = document.getElementById('range') as HTMLInputElement
 const body = document.querySelector('body') as HTMLBodyElement
 const btn = document.querySelectorAll('.bnt') as NodeListOf<HTMLElement>
 
-function handleInputChange(event: Event): void {
+function handleInputChange(): void {
   const min: number = Number(rangeInputs.min)
   const max: number = Number(rangeInputs.max)
   const val: number = Number(rangeInputs.value)
