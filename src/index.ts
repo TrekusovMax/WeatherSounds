@@ -2,31 +2,27 @@ import './style.scss'
 import { weather } from './data'
 import pauseIcon from './assets/icons/pause.svg'
 
-const audio = document.getElementById('audio')
-const rangeInputs = document.querySelector('input[type="range"]')
-const body = document.querySelector('body')
-const btn = document.querySelectorAll('.bnt')
+const audio = document.getElementById('audio') as HTMLAudioElement
+const rangeInputs = document.getElementById('range') as HTMLInputElement
+const body = document.querySelector('body') as HTMLBodyElement
+const btn = document.querySelectorAll('.bnt') as NodeListOf<HTMLElement>
 
-function handleInputChange(e) {
-  let target = e.target
-  if (e.target.type !== 'range') {
-    target = document.getElementById('range')
-  }
-  const min = target.min
-  const max = target.max
-  const val = target.value
+function handleInputChange(event: Event): void {
+  const min: number = Number(rangeInputs.min)
+  const max: number = Number(rangeInputs.max)
+  const val: number = Number(rangeInputs.value)
+  rangeInputs.style.backgroundSize =
+    ((val - min) * 100) / (max - min) + '% 100%'
 
-  target.style.backgroundSize = ((val - min) * 100) / (max - min) + '% 100%'
-
-  audio.volume = target.value / 100
+  audio.volume = Number(rangeInputs.value) / 100
 }
 
 rangeInputs.addEventListener('input', handleInputChange)
 
-let currentWeather = null
+let currentWeather: string = null
 let pause = false
 
-const handleBtnClick = (e) => {
+const handleBtnClick = (e: HTMLElement): void => {
   //При нажатии на кнопку отображается иконка паузы
   pause = !pause
   audio.pause()
@@ -55,7 +51,7 @@ const handleBtnClick = (e) => {
   }
 }
 
-btn.forEach((b) => {
+btn.forEach((b: HTMLElement) => {
   b.addEventListener('click', () => handleBtnClick(b))
   const itemIcon = document.createElement('img')
   itemIcon.setAttribute('height', '50')
