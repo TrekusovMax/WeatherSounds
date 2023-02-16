@@ -3,24 +3,21 @@ import { weather } from './data'
 import pauseIcon from './assets/icons/pause.svg'
 
 const audio = document.getElementById('audio')
-const rangeInputs = document.querySelector('input[type="range"]')
+const rangeInputs = document.getElementById('range')
 const body = document.querySelector('body')
 const btn = document.querySelectorAll('.bnt')
 
-function handleInputChange(e) {
-  let target = e.target
-  if (e.target.type !== 'range') {
-    target = document.getElementById('range')
-  }
-  const min = target.min
-  const max = target.max
-  const val = target.value
+function handleInputChange() {
+  const min = rangeInputs.min
+  const max = rangeInputs.max
+  const val = rangeInputs.value
 
-  target.style.backgroundSize = ((val - min) * 100) / (max - min) + '% 100%'
+  rangeInputs.style.backgroundSize =
+    ((val - min) * 100) / (max - min) + '% 100%'
 
-  audio.volume = target.value / 100
+  audio.volume = rangeInputs.value / 100
 }
-
+audio.loop = true
 rangeInputs.addEventListener('input', handleInputChange)
 
 let currentWeather = null
