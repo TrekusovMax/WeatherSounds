@@ -10,6 +10,7 @@ module.exports = {
 	output: {
 		filename: "[name].[contenthash].js",
 		path: path.resolve(__dirname, "dist"),
+		assetModuleFilename: "assets/[name][ext]",
 		clean: true,
 	},
 	resolve: {
@@ -25,34 +26,6 @@ module.exports = {
 					from: path.resolve(__dirname, "public/favicon.png"),
 					to: path.resolve(__dirname, "dist"),
 				},
-				{
-					from: path.resolve(__dirname, "src/assets/icons/sun.svg"),
-					to: path.resolve(__dirname, "dist"),
-				},
-				{
-					from: path.resolve(__dirname, "src/assets/icons/cloud-rain.svg"),
-					to: path.resolve(__dirname, "dist"),
-				},
-				{
-					from: path.resolve(__dirname, "src/assets/icons/cloud-snow.svg"),
-					to: path.resolve(__dirname, "dist"),
-				},
-				{
-					from: path.resolve(__dirname, "src/assets/icons/pause.svg"),
-					to: path.resolve(__dirname, "dist"),
-				},
-				{
-					from: path.resolve(__dirname, "src/assets/sounds/rain.mp3"),
-					to: path.resolve(__dirname, "dist/sounds"),
-				},
-				{
-					from: path.resolve(__dirname, "src/assets/sounds/summer.mp3"),
-					to: path.resolve(__dirname, "dist/sounds"),
-				},
-				{
-					from: path.resolve(__dirname, "src/assets/sounds/winter.mp3"),
-					to: path.resolve(__dirname, "dist/sounds"),
-				},
 			],
 		}),
 		new MiniCssExtractPlugin(),
@@ -62,6 +35,10 @@ module.exports = {
 			{
 				test: /\.css$/i,
 				use: [MiniCssExtractPlugin.loader, "css-loader"],
+			},
+			{
+				test: /\.(jpe?g|png|webp|gif)$/i,
+				type: "asset/resource",
 			},
 			{
 				test: /\.svg/,
@@ -75,23 +52,18 @@ module.exports = {
 			},
 			{
 				test: /\.s[ac]ss$/i,
-				use: [
-					MiniCssExtractPlugin.loader,
-					"css-loader",
-					{
-						loader: "postcss-loader",
-						options: {
-							postcssOptions: {
-								plugins: [require("postcss-preset-env")],
-							},
-						},
-					},
-					"sass-loader",
-				],
+				use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/i,
 				type: "asset/resource",
+			},
+			{
+				test: /\.mp3$/i,
+				type: "asset/resource",
+				generator: {
+					filename: "assets/sounds/[name][ext]",
+				},
 			},
 		],
 	},
