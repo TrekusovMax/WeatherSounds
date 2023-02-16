@@ -5,7 +5,7 @@ const path = require("path")
 
 module.exports = {
 	context: path.resolve(__dirname, "src"),
-	entry: "./index.js",
+	entry: "./index.ts",
 	output: {
 		filename: "[name].[contenthash].js",
 		path: path.resolve(__dirname, "dist"),
@@ -60,6 +60,11 @@ module.exports = {
 				generator: {
 					filename: "assets/sounds/[name][ext]",
 				},
+			},
+			{
+				test: /\.[tj]sx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/,
 			},
 		],
 	},
