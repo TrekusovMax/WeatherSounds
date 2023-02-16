@@ -41,13 +41,10 @@ module.exports = {
 				type: "asset/resource",
 			},
 			{
-				test: /\.svg/,
-				type: "asset/inline",
+				test: /\.svg$/i,
+				type: "asset/resource",
 				generator: {
-					dataUrl: (content) => {
-						content = content.toString()
-						return svgToMiniDataURI(content)
-					},
+					filename: "assets/icons/[name][ext]",
 				},
 			},
 			{
