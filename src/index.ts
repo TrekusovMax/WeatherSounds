@@ -17,6 +17,7 @@ function handleInputChange(): void {
   audio.volume = Number(rangeInputs.value) / 100
 }
 
+audio.loop = true
 rangeInputs.addEventListener('input', handleInputChange)
 
 let currentWeather: string = null
