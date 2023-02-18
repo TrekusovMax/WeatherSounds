@@ -6,7 +6,10 @@
   "scripts": {
     "start": "npx webpack serve --config webpack.config.dev.js",
     "build": "npx webpack --config webpack.config.prod.js",
-    "build:dev": "npx webpack --config webpack.config.dev.js"
+    "build:dev": "npx webpack --config webpack.config.dev.js",
+    "eslint": "eslint \"@(src)/**/*.@(ts)\" --cache --cache-location \"./.eslint-cache/\"",
+    "eslint-fix": "npm run eslint -- --fix",
+    "checks": "npm run eslint"
   },
   "author": "Trekusov Max",
   "license": "ISC",
